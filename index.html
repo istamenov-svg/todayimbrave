@@ -2,14 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#1B3A5C">
   <title>Brave Camp — Today, I'm Brave Foundation</title>
   <meta name="description" content="A free weeklong overnight camp experience for middle school kids from Harlem. Activities, mentorship, mindfulness, and outdoor adventure at Camp Eagle Hill.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: #FDFAF6; }
+    body { background: #FDFAF6; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
   </style>
 </head>
 <body>
@@ -84,8 +85,10 @@ const Nav = ({ page, setPage }) => {
             <div className="bc-nav-links">{links.map(l => (
               <button key={l.id} onClick={() => setPage(l.id)} style={{ background: page === l.id ? COLORS.tealLight : "none", border: "none", padding: "6px 12px", borderRadius: 6, cursor: "pointer", fontFamily: "'DM Sans', sans-serif", fontSize: 14, fontWeight: page === l.id ? 600 : 400, color: page === l.id ? COLORS.teal : COLORS.text }}>{l.label}</button>
             ))}</div>
-            <button onClick={() => setPage("donate")} style={{ background: "none", border: "1.5px solid " + COLORS.teal, padding: "7px 16px", borderRadius: 8, cursor: "pointer", fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 600, color: COLORS.teal, marginLeft: 4 }}>Donate</button>
-            <button onClick={() => setPage("eligibility")} style={{ background: COLORS.orange, border: "none", padding: "8px 18px", borderRadius: 8, cursor: "pointer", fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 600, color: "#fff" }}>Apply Now</button>
+            <div className="bc-desk-ctas" style={{ display: "flex", alignItems: "center", gap: 8 }}>
+              <button onClick={() => setPage("donate")} style={{ background: "none", border: "1.5px solid " + COLORS.teal, padding: "7px 16px", borderRadius: 8, cursor: "pointer", fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 600, color: COLORS.teal }}>Donate</button>
+              <button onClick={() => setPage("eligibility")} style={{ background: COLORS.orange, border: "none", padding: "8px 18px", borderRadius: 8, cursor: "pointer", fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 600, color: "#fff" }}>Apply Now</button>
+            </div>
             <button className="bc-mob-btn" onClick={() => setOpen(!open)} style={{ background: "none", border: "none", cursor: "pointer", color: COLORS.navy, padding: 4 }}>{open ? <Icons.X /> : <Icons.Menu />}</button>
           </div>
         </div>
@@ -100,17 +103,56 @@ const Nav = ({ page, setPage }) => {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+        img { max-width: 100%; height: auto; }
+        button { -webkit-tap-highlight-color: transparent; }
         .bc-nav-links { display: flex; gap: 4px; }
         .bc-mob-btn { display: none !important; }
-        @media (max-width: 900px) { .bc-nav-links { display: none !important; } .bc-mob-btn { display: block !important; } }
-        @media (max-width: 768px) { .bc-2col { grid-template-columns: 1fr !important; } .bc-4col { grid-template-columns: 1fr 1fr !important; } .bc-3col { grid-template-columns: 1fr !important; } .bc-footer { grid-template-columns: 1fr 1fr !important; } }
+        .bc-desk-ctas { display: flex; }
+        .bc-mob-sticky { display: none; }
+        .bc-hero-badge { font-size: 13px; }
+
+        @media (max-width: 900px) {
+          .bc-nav-links { display: none !important; }
+          .bc-mob-btn { display: block !important; }
+          .bc-desk-ctas { display: none !important; }
+        }
+
+        @media (max-width: 768px) {
+          .bc-2col { grid-template-columns: 1fr !important; gap: 32px !important; }
+          .bc-4col { grid-template-columns: 1fr 1fr !important; gap: 16px !important; }
+          .bc-3col { grid-template-columns: 1fr !important; gap: 12px !important; }
+          .bc-footer { grid-template-columns: 1fr !important; gap: 32px !important; }
+          .bc-mob-sticky { display: flex !important; }
+          .bc-hero-badge { font-size: 11px !important; }
+          .bc-hero-btns { flex-direction: column !important; }
+          .bc-hero-btns button { width: 100% !important; justify-content: center !important; }
+          .bc-schedule-time { width: 64px !important; font-size: 12px !important; }
+          .bc-pillar-grid { grid-template-columns: 1fr !important; }
+          .bc-donate-tiers { grid-template-columns: 1fr !important; }
+          .bc-press-grid { grid-template-columns: 1fr !important; }
+          .bc-activity-grid { grid-template-columns: 1fr 1fr !important; }
+          .bc-faq-title { font-size: 15px !important; }
+          .bc-section { padding-left: 16px !important; padding-right: 16px !important; }
+          .bc-banner-text { font-size: 18px !important; }
+          .bc-banner-sub { font-size: 12px !important; }
+          .bc-steps-grid { grid-template-columns: 1fr 1fr !important; }
+        }
+
+        @media (max-width: 480px) {
+          .bc-4col { grid-template-columns: 1fr !important; }
+          .bc-steps-grid { grid-template-columns: 1fr !important; }
+          .bc-3col { grid-template-columns: 1fr !important; }
+          .bc-stat-grid { grid-template-columns: 1fr 1fr !important; }
+          .bc-tax-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
+        }
       `}</style>
     </>
   );
 };
 
 const Section = ({ children, bg = COLORS.warmWhite, py = 80 }) => (
-  <section style={{ background: bg, padding: py + "px 20px" }}>
+  <section className="bc-section" style={{ background: bg, padding: py + "px 20px" }}>
     <div style={{ maxWidth: 1060, margin: "0 auto" }}>{children}</div>
   </section>
 );
@@ -123,7 +165,7 @@ const FAQ = ({ q, a }) => {
   return (
     <div style={{ borderBottom: "1px solid #E8DDD0" }}>
       <button onClick={() => setOpen(!open)} style={{ width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center", padding: "20px 0", background: "none", border: "none", cursor: "pointer", textAlign: "left" }}>
-        <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 17, fontWeight: 600, color: COLORS.navy, paddingRight: 20 }}>{q}</span>
+        <span className="bc-faq-title" style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 17, fontWeight: 600, color: COLORS.navy, paddingRight: 20 }}>{q}</span>
         <span style={{ transform: open ? "rotate(180deg)" : "rotate(0)", transition: "transform 0.3s", flexShrink: 0, color: COLORS.teal }}><Icons.ChevDown /></span>
       </button>
       {open && <div style={{ paddingBottom: 20, fontFamily: "'DM Sans', sans-serif", fontSize: 16, lineHeight: 1.7, color: COLORS.textLight }}>{a}</div>}
@@ -141,13 +183,13 @@ const HomePage = ({ setPage }) => (
           <div className="bc-2col" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, alignItems: "center" }}>
             <div>
               <div style={{ display: "inline-block", background: "rgba(255,255,255,0.12)", borderRadius: 20, padding: "6px 16px", marginBottom: 24 }}>
-                <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 500, color: "rgba(255,255,255,0.85)" }}>August 16–23, 2026 • Camp Eagle Hill, Elizaville, NY</span>
+                <span className="bc-hero-badge" style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 500, color: "rgba(255,255,255,0.85)" }}>August 16–23, 2026 • Camp Eagle Hill, Elizaville, NY</span>
               </div>
               <h1 style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(36px,5vw,56px)", fontWeight: 800, color: "#fff", lineHeight: 1.1, marginBottom: 20 }}>A free week that changes how your child sees themselves.</h1>
               <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 18, lineHeight: 1.6, color: "rgba(255,255,255,0.8)", marginBottom: 12, maxWidth: 520 }}>Hosted at Camp Eagle Hill — a premier overnight camp with world-class facilities in New York’s Hudson Valley.</p>
               <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 16, lineHeight: 1.6, color: "rgba(255,255,255,0.65)", marginBottom: 32, maxWidth: 520 }}>A weeklong overnight experience for middle school kids from Harlem. Activities, mentorship, mindfulness, and outdoor adventure. Completely free.</p>
-              <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-                <button onClick={() => setPage("eligibility")} style={{ background: COLORS.orange, border: "none", padding: "16px 32px", borderRadius: 10, cursor: "pointer", fontFamily: "'DM Sans', sans-serif", fontSize: 16, fontWeight: 700, color: "#fff", display: "flex", alignItems: "center", gap: 8 }}>Apply Now — Summer 2026 <Icons.Arrow /></button>
+              <div className="bc-hero-btns" style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+                <button onClick={() => setPage("eligibility") style={{ background: COLORS.orange, border: "none", padding: "16px 32px", borderRadius: 10, cursor: "pointer", fontFamily: "'DM Sans', sans-serif", fontSize: 16, fontWeight: 700, color: "#fff", display: "flex", alignItems: "center", gap: 8 }}>Apply Now — Summer 2026 <Icons.Arrow /></button>
                 <button onClick={() => setPage("program")} style={{ background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.3)", padding: "16px 28px", borderRadius: 10, cursor: "pointer", fontFamily: "'DM Sans', sans-serif", fontSize: 16, fontWeight: 500, color: "#fff" }}>See What Camp Is Like</button>
               </div>
             </div>
@@ -164,7 +206,7 @@ const HomePage = ({ setPage }) => (
         <Label>Why Brave Camp</Label>
         <H2>Everything your child needs. Nothing you have to pay.</H2>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 24 }}>
+      <div className="bc-pillar-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 24 }}>
         {[
           { icon: <Icons.Heart />, title: "It’s Completely Free", desc: "Transportation from NYC, all meals and snacks, cabin housing, gear, and every activity — fully covered. No hidden fees. No deposits. No fundraising.", color: COLORS.orange },
           { icon: <Icons.Shield />, title: "Your Child Will Be Safe", desc: "Trained counselors with background checks, on-site medical staff, 24/7 supervision at a 200-acre facility that’s been operating since 1963.", color: COLORS.teal },
@@ -181,7 +223,7 @@ const HomePage = ({ setPage }) => (
     </Section>
 
     <Section bg={COLORS.cream} py={48}>
-      <div className="bc-4col" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 24, textAlign: "center" }}>
+      <div className="bc-4col bc-stat-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 24, textAlign: "center" }}>
         {[{ n: "50+", l: "Campers per session" }, { n: "Year 5", l: "Returning to camp" }, { n: "100%", l: "First-time overnight campers" }, { n: "3:10", l: "Counselor-to-camper ratio" }].map((s, i) => (
           <div key={i}>
             <div style={{ fontFamily: "'Fraunces', serif", fontSize: 36, fontWeight: 800, color: COLORS.navy }}>{s.n}</div>
@@ -255,7 +297,7 @@ const ProgramPage = ({ setPage }) => (
           { time: "9:00 PM", title: "Lights Out", desc: "Cabin time with counselors. Rest for tomorrow’s adventure." },
         ].map((item, i) => (
           <div key={i} style={{ display: "flex", gap: 20, padding: "20px 0", borderBottom: i < 9 ? "1px solid #E8DDD0" : "none" }}>
-            <div style={{ width: 80, flexShrink: 0, fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 600, color: COLORS.teal, paddingTop: 2 }}>{item.time}</div>
+            <div className="bc-schedule-time" style={{ width: 80, flexShrink: 0, fontFamily: "'DM Sans', sans-serif", fontSize: 13, fontWeight: 600, color: COLORS.teal, paddingTop: 2 }}>{item.time}</div>
             <div>
               <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 16, fontWeight: 600, color: COLORS.navy, marginBottom: 4 }}>{item.title}</div>
               <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 15, color: COLORS.textLight, lineHeight: 1.5 }}>{item.desc}</div>
@@ -266,7 +308,7 @@ const ProgramPage = ({ setPage }) => (
     </Section>
     <Section bg={COLORS.warmWhite} py={60}>
       <h3 style={{ fontFamily: "'Fraunces', serif", fontSize: 26, fontWeight: 700, color: COLORS.navy, marginBottom: 24 }}>Activities</h3>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: 16 }}>
+      <div className="bc-activity-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: 16 }}>
         {["Archery", "Rock Climbing", "Kayaking", "Swimming", "Go-Karts", "Basketball", "Walking Trails", "Arts & Crafts", "Meditation", "Vision Mapping", "Journaling", "Music & Expression", "Team-Bonding Games", "Campfire & Stories"].map(a => (
           <div key={a} style={{ background: "#fff", border: "1px solid #E8DDD0", borderRadius: 10, padding: "16px 20px", fontFamily: "'DM Sans', sans-serif", fontSize: 15, fontWeight: 500, color: COLORS.navy, display: "flex", alignItems: "center", gap: 10 }}><span style={{ color: COLORS.teal }}><Icons.Check /></span> {a}</div>
         ))}
@@ -323,7 +365,7 @@ const EligibilityPage = ({ setPage }) => (
     </Section>
     <Section bg={COLORS.cream} py={60}>
       <h3 style={{ fontFamily: "'Fraunces', serif", fontSize: 26, fontWeight: 700, color: COLORS.navy, marginBottom: 32, textAlign: "center" }}>How to Apply</h3>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 24, maxWidth: 900, margin: "0 auto" }}>
+      <div className="bc-steps-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 24, maxWidth: 900, margin: "0 auto" }}>
         {[{ s: "1", t: "Fill Out the Interest Form", d: "Basic info: name, age, grade, contact. Takes 2 minutes." }, { s: "2", t: "We’ll Reach Out", d: "Our team contacts your family to answer questions." }, { s: "3", t: "Complete Enrollment", d: "Finish registration through our camp management system." }, { s: "4", t: "Get Ready for Camp", d: "Receive your packing list and travel details." }].map((s, i) => (
           <div key={i} style={{ background: "#fff", borderRadius: 16, padding: 28, textAlign: "center", border: "1px solid #E8DDD0" }}>
             <div style={{ width: 44, height: 44, borderRadius: "50%", background: COLORS.orange, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 16px", fontFamily: "'Fraunces', serif", fontWeight: 700, fontSize: 20, color: "#fff" }}>{s.s}</div>
@@ -398,8 +440,8 @@ const StoriesPage = () => (
         <Img src={IMAGES.heroGroup} alt="Brave Campers running" style={{ borderRadius: 20 }} />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(19,41,66,0.7), transparent 60%)", borderRadius: 20 }} />
         <div style={{ position: "absolute", bottom: 32, left: 32, right: 32 }}>
-          <p style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(20px,3vw,28px)", fontWeight: 700, color: "#fff", maxWidth: 500 }}>“I’m having too much fun to be homesick!”</p>
-          <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: "rgba(255,255,255,0.7)", marginTop: 8 }}>— Lynette, age 12, first-time Brave Camper</p>
+          <p className="bc-banner-text" style={{ fontFamily: "'Fraunces', serif", fontSize: "clamp(20px,3vw,28px)", fontWeight: 700, color: "#fff", maxWidth: 500 }}>“I’m having too much fun to be homesick!”</p>
+          <p className="bc-banner-sub" style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: "rgba(255,255,255,0.7)", marginTop: 8 }}>— Lynette, age 12, first-time Brave Camper</p>
         </div>
       </div>
     </section>
@@ -432,7 +474,7 @@ const StoriesPage = () => (
     </Section>
     <Section bg={COLORS.cream} py={48}>
       <h3 style={{ fontFamily: "'Fraunces', serif", fontSize: 22, fontWeight: 700, color: COLORS.navy, marginBottom: 20, textAlign: "center" }}>Press Coverage</h3>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 16 }}>
+      <div className="bc-press-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 16 }}>
         {[{ o: "CBS News", h: "Harlem kids brave the elements at Brave Camp in Upstate New York" }, { o: "NBC / WNYT", h: "Camp new to Saratoga County teaches bravery, coping skills to underserved youth" }, { o: "Forbes", h: "Purpose At Work: How 100Roofs Built A New Philanthropic Model" }, { o: "Ad Age", h: "Empathy is the driving force behind this mask safety initiative" }, { o: "Hollywood Reporter", h: "Rosie Perez, Ramon Rodriguez Host Fundraiser" }, { o: "Muse by Clio", h: "A Powerful Vision Brought to Life" }].map((p, i) => (
           <div key={i} style={{ background: "#fff", borderRadius: 12, padding: "20px 24px", border: "1px solid #E8DDD0" }}>
             <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, fontWeight: 700, color: COLORS.teal, letterSpacing: 1, textTransform: "uppercase", marginBottom: 8 }}>{p.o}</div>
@@ -500,7 +542,7 @@ const DonatePage = () => (
     </section>
     <Section bg="#fff" py={60}>
       <h3 style={{ fontFamily: "'Fraunces', serif", fontSize: 26, fontWeight: 700, color: COLORS.navy, marginBottom: 32, textAlign: "center" }}>What Your Gift Funds</h3>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 24 }}>
+      <div className="bc-donate-tiers" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 24 }}>
         {[{ a: "$50", d: "Covers round-trip transportation for one camper from Harlem to Camp Eagle Hill.", c: COLORS.teal }, { a: "$200", d: "Funds one camper’s full week — transportation, meals, housing, and all programming.", c: COLORS.orange }, { a: "$500", d: "Sponsors multiple campers and helps cover program materials and staff training.", c: COLORS.forest }].map((tier, i) => (
           <div key={i} style={{ background: COLORS.warmWhite, borderRadius: 16, padding: 32, border: "2px solid " + tier.c, textAlign: "center" }}>
             <div style={{ fontFamily: "'Fraunces', serif", fontSize: 44, fontWeight: 800, color: tier.c, marginBottom: 12 }}>{tier.a}</div>
@@ -518,7 +560,7 @@ const DonatePage = () => (
       </div>
     </Section>
     <Section bg={COLORS.warmWhite} py={48}>
-      <div className="bc-3col" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32, textAlign: "center" }}>
+      <div className="bc-3col bc-tax-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 32, textAlign: "center" }}>
         <div><div style={{ fontFamily: "'Fraunces', serif", fontSize: 14, fontWeight: 600, color: COLORS.teal, marginBottom: 4 }}>Tax-Deductible</div><div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: COLORS.textLight }}>501(c)(3) • EIN: 81-4843811</div></div>
         <div><div style={{ fontFamily: "'Fraunces', serif", fontSize: 14, fontWeight: 600, color: COLORS.teal, marginBottom: 4 }}>CFC Eligible</div><div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: COLORS.textLight }}>CFC #10715</div></div>
         <div><div style={{ fontFamily: "'Fraunces', serif", fontSize: 14, fontWeight: 600, color: COLORS.teal, marginBottom: 4 }}>Secure</div><div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: COLORS.textLight }}>Processed via Donorbox</div></div>
@@ -553,7 +595,7 @@ const Footer = ({ setPage }) => (
           {["Facebook", "Instagram", "LinkedIn"].map(s => <div key={s} style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 14, color: "rgba(255,255,255,0.6)", padding: "4px 0" }}>{s}</div>)}
         </div>
       </div>
-      <div style={{ borderTop: "1px solid rgba(255,255,255,0.1)", paddingTop: 24, display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
+      <div style={{ borderTop: "1px solid rgba(255,255,255,0.1)", paddingTop: 24, paddingBottom: 60, display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
         <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: "rgba(255,255,255,0.3)" }}>Today, I’m Brave® is a registered 501(c)(3) nonprofit | EIN: 81-4843811 | CFC #10715</p>
         <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: 12, color: "rgba(255,255,255,0.3)" }}>909 N. Pacific Coast Hwy, Ste. 700, El Segundo, CA 90245</p>
       </div>
@@ -571,6 +613,10 @@ function App() {
       <Nav page={page} setPage={setPage} />
       {pages[page]}
       <Footer setPage={setPage} />
+      <div className="bc-mob-sticky" style={{ display: "none", position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 99, background: "rgba(253,250,246,0.97)", borderTop: "1px solid #E8DDD0", padding: "10px 16px", gap: 8, backdropFilter: "blur(12px)" }}>
+        <button onClick={() => setPage("donate")} style={{ flex: 1, background: "none", border: "1.5px solid " + COLORS.teal, padding: "12px", borderRadius: 8, cursor: "pointer", fontFamily: "'DM Sans', sans-serif", fontSize: 15, fontWeight: 600, color: COLORS.teal }}>Donate</button>
+        <button onClick={() => setPage("eligibility")} style={{ flex: 1, background: COLORS.orange, border: "none", padding: "12px", borderRadius: 8, cursor: "pointer", fontFamily: "'DM Sans', sans-serif", fontSize: 15, fontWeight: 700, color: "#fff" }}>Apply Now</button>
+      </div>
     </div>
   );
 }
