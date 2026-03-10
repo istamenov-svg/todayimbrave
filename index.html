@@ -94,24 +94,30 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 
 <!-- HOME -->
 <div class="page active" id="page-home">
-  <!-- Hero: full dusty rose gradient matching reference -->
-  <section style="background:linear-gradient(180deg,#896778 0%,#9C758A 25%,#B6869E 50%,#CD95B2 75%,#DFA2C3 100%);min-height:100vh;display:flex;align-items:center;padding:120px 20px 80px;position:relative">
-    <!-- no gradient fade - sharp cut -->
+  <!-- Hero: full-bleed photo background -->
+  <section id="heroSection" style="position:relative;min-height:100vh;display:flex;align-items:center;padding:120px 20px 80px;overflow:hidden;background:#896778">
+    <!-- BG image via JS -->
+    <div id="heroBgImg" style="position:absolute;inset:0;background-size:cover;background-position:70% center;z-index:0"></div>
+    <!-- Gradient overlay: dark on left for text readability, transparent on right to show the girl -->
+    <div id="heroOverlay" style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(60,30,45,0.85) 0%,rgba(60,30,45,0.7) 35%,rgba(60,30,45,0.3) 55%,transparent 75%);z-index:1"></div>
+    <!-- Mobile: reposition image and overlay direction -->
+    <style>
+      @media(max-width:768px){
+        #heroSection{align-items:flex-start!important;padding-top:100px!important;padding-bottom:40px!important;min-height:90vh!important}
+        #heroBgImg{background-position:65% 20%!important}
+        #heroOverlay{background:linear-gradient(180deg,rgba(60,30,45,0.88) 0%,rgba(60,30,45,0.75) 40%,rgba(60,30,45,0.3) 65%,transparent 80%)!important}
+      }
+    </style>
     <div class="wrap" style="position:relative;z-index:2;width:100%">
-      <div class="grid hero-grid" style="grid-template-columns:1fr 1fr;gap:60px;align-items:center">
-        <div>
-          <div style="display:inline-block;background:rgba(255,255,255,0.15);border-radius:20px;padding:6px 16px;margin-bottom:24px">
-            <span style="font-size:13px;font-weight:500;color:rgba(255,255,255,0.9)">August 16–23, 2026 · Camp Eagle Hill, Elizaville, NY</span>
-          </div>
-          <h1 class="hv" style="font-size:clamp(36px,5vw,56px);font-weight:700;color:#fff;line-height:1.1;margin-bottom:20px">A week that changes how your child sees themselves.</h1>
-          <p style="font-size:18px;line-height:1.6;color:rgba(255,255,255,0.85);margin-bottom:32px;max-width:520px">Hosted at Camp Eagle Hill — a premier overnight camp with world-class facilities in New York's Hudson Valley. A full week of camp for just a $50 refundable deposit.</p>
-          <div class="hero-btns" style="display:flex;gap:12px;flex-wrap:wrap">
-            <button class="btn-primary" onclick="showPage('eligibility')">Apply Now — Summer 2026</button>
-            <button onclick="showPage('program')" style="background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.4);padding:16px 28px;border-radius:10px;font-size:16px;font-weight:500;color:#fff;backdrop-filter:blur(4px)">See What Camp Is Like</button>
-          </div>
+      <div style="max-width:540px">
+        <div style="display:inline-block;background:rgba(255,255,255,0.12);border-radius:20px;padding:6px 16px;margin-bottom:24px;backdrop-filter:blur(4px)">
+          <span style="font-size:13px;font-weight:500;color:rgba(255,255,255,0.9)">August 16–23, 2026 · Camp Eagle Hill, Elizaville, NY</span>
         </div>
-        <div style="border-radius:16px;overflow:hidden;box-shadow:0 24px 48px rgba(0,0,0,0.2)">
-          <img data-img="hero" alt="Brave Camper" class="img-cover" style="aspect-ratio:4/5">
+        <h1 class="hv" style="font-size:clamp(36px,5vw,56px);font-weight:700;color:#fff;line-height:1.1;margin-bottom:20px">A week that changes how your child sees themselves.</h1>
+        <p style="font-size:18px;line-height:1.6;color:rgba(255,255,255,0.88);margin-bottom:32px;max-width:480px">Hosted at Camp Eagle Hill — a premier overnight camp with world-class facilities in New York's Hudson Valley. A full week of camp for just a $50 refundable deposit.</p>
+        <div class="hero-btns" style="display:flex;gap:12px;flex-wrap:wrap">
+          <button class="btn-primary" onclick="showPage('eligibility')">Apply Now — Summer 2026</button>
+          <button onclick="showPage('program')" style="background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.35);padding:16px 28px;border-radius:10px;font-size:16px;font-weight:500;color:#fff;backdrop-filter:blur(4px)">See What Camp Is Like</button>
         </div>
       </div>
     </div>
@@ -402,6 +408,9 @@ var navLogoEl=document.getElementById('navLogo');
 if(navLogoEl && LOGO) navLogoEl.src=LOGO;
 var footerLogoEl=document.getElementById('footerLogo');
 if(footerLogoEl && LOGO) footerLogoEl.src=LOGO;
+// Hero background
+var heroBg=document.getElementById('heroBgImg');
+if(heroBg && IMG['heroBg']) heroBg.style.backgroundImage='url('+IMG['heroBg']+')';
 </script>
 </body>
 </html>
