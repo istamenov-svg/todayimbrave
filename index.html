@@ -6,11 +6,11 @@
 <meta name="theme-color" content="#1B3A5C">
 <title>Brave Camp — Today, I'm Brave Foundation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;background:#FDFAF6;color:#2C2C2C;-webkit-font-smoothing:antialiased}
+body{font-family:'Montserrat',sans-serif;background:#FDFAF6;color:#2C2C2C;-webkit-font-smoothing:antialiased}
 img{max-width:100%;height:auto;display:block}
 button{cursor:pointer;border:none;background:none;font-family:inherit}
 .fr{font-family:'Fraunces',serif}
@@ -23,28 +23,33 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 .gauto{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
 .img-cover{width:100%;height:100%;object-fit:cover;border-radius:12px}
 .card{background:#fff;border:1px solid #E8DDD0;border-radius:16px;padding:32px}
-.label{font-size:12px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:#1A8A7D;margin-bottom:12px}
+.label{font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#D64B8A;margin-bottom:12px}
 .h2{font-family:'Fraunces',serif;font-size:clamp(28px,4vw,40px);font-weight:700;color:#1B3A5C;line-height:1.2;margin-bottom:16px}
 .body-text{font-size:17px;line-height:1.7;color:#5A5A5A;max-width:680px}
-.btn-primary{background:#E8793A;color:#fff;padding:14px 32px;border-radius:10px;font-size:16px;font-weight:600;display:inline-flex;align-items:center;gap:8px}
-.btn-outline{background:none;border:1.5px solid #1A8A7D;color:#1A8A7D;padding:12px 24px;border-radius:10px;font-size:15px;font-weight:600}
+.btn-primary{background:#E8793A;color:#fff;padding:14px 32px;border-radius:10px;font-size:16px;font-weight:600;display:inline-flex;align-items:center;gap:8px;transition:background 0.2s}
+.btn-primary:hover{background:#d46a2e}
+.btn-outline{background:none;border:1.5px solid #D64B8A;color:#D64B8A;padding:12px 24px;border-radius:10px;font-size:15px;font-weight:600;transition:all 0.2s}
+.btn-outline:hover{background:#D64B8A;color:#fff}
 .page{display:none}.page.active{display:block}
 .nav{position:sticky;top:0;z-index:100;background:rgba(253,250,246,0.95);border-bottom:1px solid #E8DDD0;backdrop-filter:blur(12px)}
 .nav-inner{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:64px}
 .nav-links{display:flex;gap:4px}
-.nav-link{padding:6px 12px;border-radius:6px;font-size:14px;color:#2C2C2C}
-.nav-link.active{background:#E8F5F3;color:#1A8A7D;font-weight:600}
+.nav-link{padding:6px 12px;border-radius:6px;font-size:14px;color:#2C2C2C;transition:all 0.15s}
+.nav-link.active{background:#fce4ef;color:#D64B8A;font-weight:600}
+.nav-link:hover{background:#F7F2EB}
 .nav-ctas{display:flex;align-items:center;gap:8px}
 .mob-menu-btn{display:none;padding:4px;color:#1B3A5C}
 .mob-menu{display:none;background:#FDFAF6;border-top:1px solid #E8DDD0;padding:12px 20px 20px}
 .mob-menu.open{display:block}
 .mob-link{display:block;width:100%;text-align:left;padding:12px 16px;border-radius:8px;font-size:16px;color:#2C2C2C;margin-bottom:2px}
-.mob-link.active{background:#F7F2EB;font-weight:600}
+.mob-link.active{background:#fce4ef;font-weight:600;color:#D64B8A}
 .mob-sticky{display:none;position:fixed;bottom:0;left:0;right:0;z-index:99;background:rgba(253,250,246,0.97);border-top:1px solid #E8DDD0;padding:10px 16px;gap:8px;backdrop-filter:blur(12px)}
 .faq-btn{width:100%;display:flex;justify-content:space-between;align-items:center;padding:20px 0;text-align:left;border-bottom:1px solid #E8DDD0}
 .faq-btn span:first-child{font-size:17px;font-weight:600;color:#1B3A5C;padding-right:20px}
 .faq-answer{display:none;padding:0 0 20px;font-size:16px;line-height:1.7;color:#5A5A5A;border-bottom:1px solid #E8DDD0}
 .faq-answer.open{display:block}
+.pink-accent{color:#D64B8A}
+.pink-bg{background:#D64B8A}
 @media(max-width:900px){
   .nav-links,.nav-ctas{display:none}
   .mob-menu-btn{display:block}
@@ -66,8 +71,9 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
 <!-- NAV -->
 <nav class="nav">
   <div class="nav-inner">
-    <button onclick="showPage('home')" style="display:flex;align-items:center;gap:12px">
-      <img id="navLogo" alt="Today, I'm Brave" style="height:28px;width:auto">
+    <button onclick="showPage('home')" style="display:flex;align-items:center;gap:10px">
+      <img id="navLogo" alt="Brave Camp" style="height:42px;width:auto">
+      <span style="font-family:'Fraunces',serif;font-weight:700;font-size:17px;color:#1B3A5C;display:none" class="logo-text">Brave Camp</span>
     </button>
     <div style="display:flex;align-items:center;gap:8px">
       <div class="nav-links" id="navLinks"></div>
@@ -93,8 +99,8 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
           <div style="display:inline-block;background:rgba(255,255,255,0.12);border-radius:20px;padding:6px 16px;margin-bottom:24px">
             <span style="font-size:13px;font-weight:500;color:rgba(255,255,255,0.85)">August 16–23, 2026 · Camp Eagle Hill, Elizaville, NY</span>
           </div>
-          <h1 class="fr" style="font-size:clamp(36px,5vw,56px);font-weight:800;color:#fff;line-height:1.1;margin-bottom:20px">A free week that changes how your child sees themselves.</h1>
-          <p style="font-size:18px;line-height:1.6;color:rgba(255,255,255,0.8);margin-bottom:32px;max-width:520px">Hosted at Camp Eagle Hill — a premier overnight camp with world-class facilities in New York's Hudson Valley. Completely free for middle school kids from Harlem.</p>
+          <h1 class="fr" style="font-size:clamp(36px,5vw,56px);font-weight:800;color:#fff;line-height:1.1;margin-bottom:20px">A week that changes how your child sees themselves.</h1>
+          <p style="font-size:18px;line-height:1.6;color:rgba(255,255,255,0.8);margin-bottom:32px;max-width:520px">Hosted at Camp Eagle Hill — a premier overnight camp with world-class facilities in New York's Hudson Valley. A full week of camp for just a $50 refundable deposit.</p>
           <div class="hero-btns" style="display:flex;gap:12px;flex-wrap:wrap">
             <button class="btn-primary" onclick="showPage('eligibility')">Apply Now — Summer 2026</button>
             <button onclick="showPage('program')" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.3);padding:16px 28px;border-radius:10px;font-size:16px;font-weight:500;color:#fff">See What Camp Is Like</button>
@@ -110,35 +116,57 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
   <section class="sec" style="padding-top:80px">
     <div class="wrap" style="text-align:center;margin-bottom:48px">
       <div class="label">Why Brave Camp</div>
-      <h2 class="h2">Everything your child needs. Nothing you have to pay.</h2>
+      <h2 class="h2">A full week of camp. Only a $50 deposit.</h2>
+      <p class="body-text" style="margin:0 auto;text-align:center">Transportation, meals, housing, gear, and every activity — covered. Your $50 deposit is returned when your child arrives at camp.</p>
     </div>
     <div class="wrap"><div class="grid gauto">
-      <div class="card" style="position:relative;overflow:hidden"><div style="position:absolute;top:0;left:0;right:0;height:4px;background:#E8793A"></div><h3 class="fr" style="font-size:22px;font-weight:700;color:#1B3A5C;margin:20px 0 12px">It's Completely Free</h3><p style="font-size:15px;line-height:1.65;color:#5A5A5A">Transportation from NYC, all meals, cabin housing, gear, and every activity — fully covered.</p></div>
+      <div class="card" style="position:relative;overflow:hidden"><div style="position:absolute;top:0;left:0;right:0;height:4px;background:#D64B8A"></div><h3 class="fr" style="font-size:22px;font-weight:700;color:#1B3A5C;margin:20px 0 12px">Just $50 to Reserve a Spot</h3><p style="font-size:15px;line-height:1.65;color:#5A5A5A">A small refundable deposit holds your child's place. Everything else — transportation, meals, cabin, gear, and every activity — is fully covered.</p></div>
       <div class="card" style="position:relative;overflow:hidden"><div style="position:absolute;top:0;left:0;right:0;height:4px;background:#1A8A7D"></div><h3 class="fr" style="font-size:22px;font-weight:700;color:#1B3A5C;margin:20px 0 12px">Your Child Will Be Safe</h3><p style="font-size:15px;line-height:1.65;color:#5A5A5A">Trained counselors with background checks, on-site medical staff, 24/7 supervision at a 200-acre facility.</p></div>
-      <div class="card" style="position:relative;overflow:hidden"><div style="position:absolute;top:0;left:0;right:0;height:4px;background:#2D5A3D"></div><h3 class="fr" style="font-size:22px;font-weight:700;color:#1B3A5C;margin:20px 0 12px">They'll Come Home Different</h3><p style="font-size:15px;line-height:1.65;color:#5A5A5A">Confidence, coping tools, new friendships, and the knowledge that they handled something hard.</p></div>
+      <div class="card" style="position:relative;overflow:hidden"><div style="position:absolute;top:0;left:0;right:0;height:4px;background:#E8793A"></div><h3 class="fr" style="font-size:22px;font-weight:700;color:#1B3A5C;margin:20px 0 12px">They'll Come Home Different</h3><p style="font-size:15px;line-height:1.65;color:#5A5A5A">Confidence, coping tools, new friendships, and the knowledge that they handled something hard.</p></div>
     </div></div>
   </section>
 
   <section style="background:#F7F2EB;padding:48px 20px">
     <div class="wrap" style="display:flex;flex-wrap:wrap;justify-content:space-around;gap:32px;text-align:center">
       <div><div class="fr" style="font-size:36px;font-weight:800;color:#1B3A5C">50+</div><div style="font-size:14px;color:#5A5A5A;margin-top:4px">Campers per session</div></div>
-      <div><div class="fr" style="font-size:36px;font-weight:800;color:#1B3A5C">Year 5</div><div style="font-size:14px;color:#5A5A5A;margin-top:4px">Returning to camp</div></div>
+      <div><div class="fr" style="font-size:36px;font-weight:800;color:#D64B8A">Year 5</div><div style="font-size:14px;color:#5A5A5A;margin-top:4px">Returning to camp</div></div>
       <div><div class="fr" style="font-size:36px;font-weight:800;color:#1B3A5C">100%</div><div style="font-size:14px;color:#5A5A5A;margin-top:4px">First-time campers</div></div>
       <div><div class="fr" style="font-size:36px;font-weight:800;color:#1B3A5C">3:10</div><div style="font-size:14px;color:#5A5A5A;margin-top:4px">Counselor ratio</div></div>
     </div>
   </section>
 
+  <!-- Photo strip -->
+  <section style="padding:40px 20px"><div class="wrap"><div class="grid g4" style="gap:12px">
+    <div style="border-radius:12px;overflow:hidden;aspect-ratio:1/1"><img data-img="archery" class="img-cover"></div>
+    <div style="border-radius:12px;overflow:hidden;aspect-ratio:1/1"><img data-img="campfire" class="img-cover"></div>
+    <div style="border-radius:12px;overflow:hidden;aspect-ratio:1/1"><img data-img="nature" class="img-cover"></div>
+    <div style="border-radius:12px;overflow:hidden;aspect-ratio:1/1"><img data-img="journaling" class="img-cover"></div>
+  </div></div></section>
+
+  <!-- Donor CTA -->
   <section style="background:#132942;padding:64px 20px">
     <div class="wrap"><div class="grid g2" style="gap:48px;align-items:center">
       <div style="border-radius:16px;overflow:hidden"><img data-img="dockJump" class="img-cover" style="aspect-ratio:4/5"></div>
       <div>
-        <div class="label" style="color:rgba(255,255,255,0.5)">Support Brave Camp</div>
-        <h2 class="fr" style="font-size:clamp(24px,3.5vw,34px);font-weight:700;color:#fff;line-height:1.25;margin-bottom:16px">Every camper attends free. That's only possible because of you.</h2>
-        <p style="font-size:16px;line-height:1.65;color:rgba(255,255,255,0.65);margin-bottom:28px">$200 covers one camper's full week — transportation, meals, housing, and programming.</p>
+        <div style="font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:12px">Support Brave Camp</div>
+        <h2 class="fr" style="font-size:clamp(24px,3.5vw,34px);font-weight:700;color:#fff;line-height:1.25;margin-bottom:16px">We keep the cost near zero for families. That's only possible because of you.</h2>
+        <p style="font-size:16px;line-height:1.65;color:rgba(255,255,255,0.65);margin-bottom:28px">$200 covers one camper's full week — transportation, meals, housing, and programming. Families only pay a small refundable deposit.</p>
         <button class="btn-primary" onclick="showPage('donate')">Support a Camper</button>
       </div>
     </div></div>
   </section>
+
+  <!-- Press bar -->
+  <section class="sec" style="padding:40px 20px"><div class="wrap" style="text-align:center">
+    <p style="font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#999;margin-bottom:20px">As Featured In</p>
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:32px;opacity:0.5">
+      <span style="font-size:18px;font-weight:700;color:#1B3A5C">CBS News</span>
+      <span style="font-size:18px;font-weight:700;color:#1B3A5C">Forbes</span>
+      <span style="font-size:18px;font-weight:700;color:#1B3A5C">NBC</span>
+      <span style="font-size:18px;font-weight:700;color:#1B3A5C">Ad Age</span>
+      <span style="font-size:18px;font-weight:700;color:#1B3A5C">Hollywood Reporter</span>
+    </div>
+  </div></section>
 </div>
 
 <!-- PROGRAM -->
@@ -148,6 +176,13 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
     <h2 class="h2">A week built to change how kids see themselves.</h2>
     <p class="body-text">Every day follows the Brave Journey — our signature framework that builds confidence through themed activities, creative expression, and guided reflection.</p>
   </div></section>
+  <section style="padding:0 20px 40px"><div class="wrap"><div class="grid g2" style="gap:24px;align-items:center">
+    <div style="border-radius:16px;overflow:hidden"><img data-img="meditation" class="img-cover" style="aspect-ratio:3/2"></div>
+    <div class="card">
+      <h3 class="fr" style="font-size:22px;font-weight:700;color:#1B3A5C;margin-bottom:12px">The Brave Journey</h3>
+      <p style="font-size:15px;line-height:1.65;color:#5A5A5A">Each day builds on the last. Campers start with self-reflection, move into challenge activities, and end with campfire sharing. By the end of the week, they've built a toolbox of confidence, coping skills, and friendships that lasts.</p>
+    </div>
+  </div></div></section>
   <section class="sec" style="background:#F7F2EB"><div class="wrap">
     <h3 class="fr" style="font-size:26px;font-weight:700;color:#1B3A5C;margin-bottom:32px;text-align:center">A Day at Brave Camp</h3>
     <div style="max-width:680px;margin:0 auto" id="schedule"></div>
@@ -172,19 +207,19 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
   <section class="sec"><div class="wrap">
     <div class="label">Who It's For</div>
     <h2 class="h2">Never been to overnight camp? That's exactly who this is for.</h2>
-    <p class="body-text">Brave Camp is designed for middle school kids from Harlem who haven't had access to programs like this.</p>
+    <p class="body-text">Brave Camp is designed for middle school kids from Harlem who haven't had access to programs like this. The full experience costs families just a $50 refundable deposit.</p>
   </div></section>
   <section class="sec" style="background:#fff"><div class="wrap"><div class="grid g2" style="gap:48px">
     <div>
       <h3 class="fr" style="font-size:24px;font-weight:700;color:#1B3A5C;margin-bottom:20px">Eligibility</h3>
-      <div style="display:flex;gap:16px;padding:16px 0;border-bottom:1px solid #E8DDD0"><span style="font-size:14px;font-weight:600;color:#1A8A7D;width:100px;flex-shrink:0">Age</span><span>Grades 5–8</span></div>
-      <div style="display:flex;gap:16px;padding:16px 0;border-bottom:1px solid #E8DDD0"><span style="font-size:14px;font-weight:600;color:#1A8A7D;width:100px;flex-shrink:0">Community</span><span>District 5, Harlem</span></div>
-      <div style="display:flex;gap:16px;padding:16px 0;border-bottom:1px solid #E8DDD0"><span style="font-size:14px;font-weight:600;color:#1A8A7D;width:100px;flex-shrink:0">Experience</span><span>No prior camp required</span></div>
-      <div style="display:flex;gap:16px;padding:16px 0;border-bottom:1px solid #E8DDD0"><span style="font-size:14px;font-weight:600;color:#1A8A7D;width:100px;flex-shrink:0">Cost</span><span>Completely free</span></div>
+      <div style="display:flex;gap:16px;padding:16px 0;border-bottom:1px solid #E8DDD0"><span style="font-size:14px;font-weight:600;color:#D64B8A;width:100px;flex-shrink:0">Age</span><span>Grades 5–8</span></div>
+      <div style="display:flex;gap:16px;padding:16px 0;border-bottom:1px solid #E8DDD0"><span style="font-size:14px;font-weight:600;color:#D64B8A;width:100px;flex-shrink:0">Community</span><span>District 5, Harlem</span></div>
+      <div style="display:flex;gap:16px;padding:16px 0;border-bottom:1px solid #E8DDD0"><span style="font-size:14px;font-weight:600;color:#D64B8A;width:100px;flex-shrink:0">Experience</span><span>No prior camp required</span></div>
+      <div style="display:flex;gap:16px;padding:16px 0;border-bottom:1px solid #E8DDD0"><span style="font-size:14px;font-weight:600;color:#D64B8A;width:100px;flex-shrink:0">Cost</span><span>$50 refundable deposit — everything else covered</span></div>
     </div>
-    <div style="background:#E8F5F3;border-radius:16px;padding:32px">
+    <div style="background:#fce4ef;border-radius:16px;padding:32px">
       <h3 class="fr" style="font-size:22px;font-weight:700;color:#1B3A5C;margin-bottom:20px">What's Included</h3>
-      <p style="font-size:15px;color:#5A5A5A;margin-bottom:20px">Everything. Your family pays nothing.</p>
+      <p style="font-size:15px;color:#5A5A5A;margin-bottom:20px">Everything beyond your $50 deposit — which you get back at check-in.</p>
       <div id="inclusions"></div>
     </div>
   </div></div></section>
@@ -192,10 +227,10 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
     <h3 class="fr" style="font-size:26px;font-weight:700;color:#1B3A5C;margin-bottom:32px;text-align:center">How to Apply</h3>
     <div class="grid gauto" style="max-width:900px;margin:0 auto" id="steps"></div>
   </div></section>
-  <section style="background:#EDF5EF;padding:48px 20px"><div style="max-width:640px;margin:0 auto;background:#fff;border-radius:16px;padding:40px;text-align:center;border:1px solid #E8DDD0">
+  <section style="background:linear-gradient(135deg,#D64B8A,#E8793A);padding:48px 20px"><div style="max-width:640px;margin:0 auto;background:#fff;border-radius:16px;padding:40px;text-align:center">
     <div class="fr" style="font-size:28px;font-weight:700;color:#1B3A5C;margin-bottom:12px">Ready?</div>
-    <p style="font-size:16px;color:#5A5A5A;margin-bottom:24px">Registration for Summer 2026 is open. Spots are limited.</p>
-    <button class="btn-primary" style="font-size:17px;padding:16px 40px">Apply Now — It's Free</button>
+    <p style="font-size:16px;color:#5A5A5A;margin-bottom:24px">Registration for Summer 2026 is open. Reserve your child's spot with a $50 refundable deposit.</p>
+    <button class="btn-primary" style="font-size:17px;padding:16px 40px">Apply Now</button>
   </div></section>
 </div>
 
@@ -206,7 +241,25 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
     <h2 class="h2">The specifics that matter when it's your child.</h2>
     <p class="body-text">We give you details — who's watching your child, what happens if they get sick, and how we handle every scenario.</p>
   </div></section>
-  <section class="sec" style="background:#fff"><div class="wrap"><div class="grid g2" style="gap:32px;align-items:center">
+  <section class="sec" style="background:#fff"><div class="wrap"><div class="grid g2" style="gap:32px">
+    <div class="card" style="border-left:4px solid #D64B8A">
+      <h4 style="font-size:17px;font-weight:700;color:#1B3A5C;margin-bottom:8px">Supervision</h4>
+      <p style="font-size:15px;line-height:1.65;color:#5A5A5A">3 counselors for every 10 campers. Background-checked. They live in the cabins 24/7.</p>
+    </div>
+    <div class="card" style="border-left:4px solid #1A8A7D">
+      <h4 style="font-size:17px;font-weight:700;color:#1B3A5C;margin-bottom:8px">Medical</h4>
+      <p style="font-size:15px;line-height:1.65;color:#5A5A5A">On-site medical staff with infirmary access around the clock. Local hospitals within 10 miles.</p>
+    </div>
+    <div class="card" style="border-left:4px solid #E8793A">
+      <h4 style="font-size:17px;font-weight:700;color:#1B3A5C;margin-bottom:8px">Emotional Support</h4>
+      <p style="font-size:15px;line-height:1.65;color:#5A5A5A">Counselors are trained in homesickness and transition support. Campers are surrounded by kids from their own community.</p>
+    </div>
+    <div class="card" style="border-left:4px solid #1B3A5C">
+      <h4 style="font-size:17px;font-weight:700;color:#1B3A5C;margin-bottom:8px">Communication</h4>
+      <p style="font-size:15px;line-height:1.65;color:#5A5A5A">Parents receive updates during camp week. Emergency contact protocols are in place 24/7.</p>
+    </div>
+  </div></div></section>
+  <section class="sec"><div class="wrap"><div class="grid g2" style="gap:32px;align-items:center">
     <div>
       <h3 class="fr" style="font-size:26px;font-weight:700;color:#1B3A5C;margin-bottom:16px">Who's Watching Your Child</h3>
       <p class="body-text">Every counselor has passed a background check and reference verification. They live in the cabins with your child. 3 counselors for every 10 campers, 24/7.</p>
@@ -236,6 +289,11 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
       <div style="border-radius:12px;overflow:hidden;aspect-ratio:1/1"><img data-img="campfire" class="img-cover"></div>
       <div style="border-radius:12px;overflow:hidden;aspect-ratio:1/1"><img data-img="climbing" class="img-cover"></div>
     </div>
+    <div class="grid g3" style="gap:16px;margin-top:16px">
+      <div style="border-radius:12px;overflow:hidden;aspect-ratio:1/1"><img data-img="archery" class="img-cover"></div>
+      <div style="border-radius:12px;overflow:hidden;aspect-ratio:1/1"><img data-img="journaling" class="img-cover"></div>
+      <div style="border-radius:12px;overflow:hidden;aspect-ratio:1/1"><img data-img="meditation" class="img-cover"></div>
+    </div>
   </div></section>
 </div>
 
@@ -246,30 +304,49 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
     <h2 class="h2">The answers to the questions you're really asking.</h2>
   </div></section>
   <section class="sec" style="background:#fff"><div class="wrap" style="border-top:1px solid #E8DDD0">
-    <button class="faq-btn" onclick="toggleFaq(this)"><span>Is Brave Camp really free?</span><svg class="faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1A8A7D" stroke-width="2.5" stroke-linecap="round" style="transition:transform 0.3s;flex-shrink:0"><polyline points="6 9 12 15 18 9"/></svg></button>
-    <div class="faq-answer">Yes. Transportation from NYC, all meals, cabin housing, gear, activities, and medical coverage are fully covered. No hidden costs.</div>
-    <button class="faq-btn" onclick="toggleFaq(this)"><span>Who watches my child?</span><svg class="faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1A8A7D" stroke-width="2.5" stroke-linecap="round" style="transition:transform 0.3s;flex-shrink:0"><polyline points="6 9 12 15 18 9"/></svg></button>
+
+    <button class="faq-btn" onclick="toggleFaq(this)"><span>How much does Brave Camp cost?</span><svg class="faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D64B8A" stroke-width="2.5" stroke-linecap="round" style="transition:transform 0.3s;flex-shrink:0"><polyline points="6 9 12 15 18 9"/></svg></button>
+    <div class="faq-answer">Brave Camp asks for a $50 refundable deposit to reserve your child's spot. This deposit is returned to you when your child checks in at camp. Beyond that, everything is covered — transportation from NYC, all meals, cabin housing, gear, activities, and medical coverage. The deposit simply confirms your family's commitment to attending.</div>
+
+    <button class="faq-btn" onclick="toggleFaq(this)"><span>Why is there a deposit?</span><svg class="faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D64B8A" stroke-width="2.5" stroke-linecap="round" style="transition:transform 0.3s;flex-shrink:0"><polyline points="6 9 12 15 18 9"/></svg></button>
+    <div class="faq-answer">Spots at Brave Camp are limited and every empty bunk means a child who could have attended didn't. The $50 deposit ensures families who sign up follow through, so no spots go to waste. You get the full amount back when your child arrives at camp.</div>
+
+    <button class="faq-btn" onclick="toggleFaq(this)"><span>Who watches my child?</span><svg class="faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D64B8A" stroke-width="2.5" stroke-linecap="round" style="transition:transform 0.3s;flex-shrink:0"><polyline points="6 9 12 15 18 9"/></svg></button>
     <div class="faq-answer">Trained counselors who have passed background checks. The ratio is approximately 3 counselors for every 10 campers. They live in the cabins 24/7.</div>
-    <button class="faq-btn" onclick="toggleFaq(this)"><span>My child has never been to camp. Is that okay?</span><svg class="faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1A8A7D" stroke-width="2.5" stroke-linecap="round" style="transition:transform 0.3s;flex-shrink:0"><polyline points="6 9 12 15 18 9"/></svg></button>
+
+    <button class="faq-btn" onclick="toggleFaq(this)"><span>My child has never been to camp. Is that okay?</span><svg class="faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D64B8A" stroke-width="2.5" stroke-linecap="round" style="transition:transform 0.3s;flex-shrink:0"><polyline points="6 9 12 15 18 9"/></svg></button>
     <div class="faq-answer">That's exactly who Brave Camp is for. Every camper is a first-timer. By day two, most campers don't want to leave.</div>
-    <button class="faq-btn" onclick="toggleFaq(this)"><span>What if my child gets homesick?</span><svg class="faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1A8A7D" stroke-width="2.5" stroke-linecap="round" style="transition:transform 0.3s;flex-shrink:0"><polyline points="6 9 12 15 18 9"/></svg></button>
+
+    <button class="faq-btn" onclick="toggleFaq(this)"><span>What if my child gets homesick?</span><svg class="faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D64B8A" stroke-width="2.5" stroke-linecap="round" style="transition:transform 0.3s;flex-shrink:0"><polyline points="6 9 12 15 18 9"/></svg></button>
     <div class="faq-answer">Homesickness is normal and we're prepared for it. Counselors are trained in transition support. Your child will be surrounded by kids from their own community.</div>
+
+    <button class="faq-btn" onclick="toggleFaq(this)"><span>What's included beyond the deposit?</span><svg class="faq-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D64B8A" stroke-width="2.5" stroke-linecap="round" style="transition:transform 0.3s;flex-shrink:0"><polyline points="6 9 12 15 18 9"/></svg></button>
+    <div class="faq-answer">Everything. Round-trip transportation from Harlem to Camp Eagle Hill, all meals and snacks, cabin housing with full bathrooms, all activities and programming materials, gear, and on-site medical coverage.</div>
+
   </div></section>
 </div>
 
 <!-- DONATE -->
 <div class="page" id="page-donate">
-  <section class="sec"><div class="wrap">
-    <div class="label">Support Brave Camp</div>
-    <h2 class="h2">You make free possible.</h2>
-    <p class="body-text">Every Brave Camper attends at no cost. That's only possible because people like you invest in their experience.</p>
-  </div></section>
+  <section style="position:relative;padding:80px 20px;background:linear-gradient(135deg,#132942,#1B3A5C)">
+    <div class="wrap" style="position:relative;z-index:2">
+      <div class="grid g2" style="gap:48px;align-items:center">
+        <div>
+          <div style="font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:12px">Support Brave Camp</div>
+          <h2 class="fr" style="font-size:clamp(28px,4vw,40px);font-weight:700;color:#fff;line-height:1.2;margin-bottom:16px">You make this possible.</h2>
+          <p style="font-size:17px;line-height:1.7;color:rgba(255,255,255,0.65)">Families pay just a $50 refundable deposit. The rest — transportation, meals, housing, gear, and programming — is covered by donors like you.</p>
+        </div>
+        <div style="border-radius:16px;overflow:hidden"><img data-img="groupPhoto" class="img-cover" style="aspect-ratio:4/3"></div>
+      </div>
+    </div>
+  </section>
   <section class="sec" style="background:#fff"><div class="wrap">
     <h3 class="fr" style="font-size:26px;font-weight:700;color:#1B3A5C;margin-bottom:32px;text-align:center">What Your Gift Funds</h3>
     <div class="grid gauto" id="givingTiers"></div>
   </div></section>
   <section class="sec"><div class="wrap" style="text-align:center">
-    <p style="font-size:14px;color:#5A5A5A">501(c)(3) · EIN: 81-4843811 · CFC #10715 · Processed via Donorbox</p>
+    <p style="font-size:14px;color:#5A5A5A;margin-bottom:8px">Today, I'm Brave Foundation</p>
+    <p style="font-size:13px;color:#999">501(c)(3) · EIN: 81-4843811 · CFC #10715 · Processed via Donorbox</p>
   </div></section>
 </div>
 
@@ -278,7 +355,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
   <div style="max-width:1060px;margin:0 auto">
     <div style="display:flex;flex-wrap:wrap;gap:40px;margin-bottom:40px">
       <div style="flex:2;min-width:200px">
-        <p class="fr" style="font-weight:700;font-size:18px;color:#fff;margin-bottom:12px">Brave Camp</p>
+        <div style="margin-bottom:16px"><img id="footerLogo" alt="Brave Camp" style="height:56px;width:auto"></div>
         <p style="font-size:14px;color:rgba(255,255,255,0.5)">A program of Today, I'm Brave Foundation.<br>Hosted at Camp Eagle Hill, Elizaville, NY.</p>
         <p style="font-size:13px;color:rgba(255,255,255,0.35);margin-top:12px">support@todayimbrave.org · 310-445-5200</p>
       </div>
@@ -307,18 +384,18 @@ button{cursor:pointer;border:none;background:none;font-family:inherit}
   <button class="btn-primary" style="flex:1;padding:12px;font-size:15px;justify-content:center" onclick="showPage('eligibility')">Apply Now</button>
 </div>
 
-<!-- SCRIPTS: images first, then app logic -->
+<!-- SCRIPTS -->
 <script src="images.js"></script>
 <script src="app.js"></script>
 <script>
-// Inject images into all elements with data-img attribute
 document.querySelectorAll('[data-img]').forEach(function(el){
-  var key = el.getAttribute('data-img');
-  if(IMG[key]) el.src = IMG[key];
+  var key=el.getAttribute('data-img');
+  if(IMG[key]) el.src=IMG[key];
 });
-// Set logo
-var logoEl = document.getElementById('navLogo');
-if(logoEl && LOGO) logoEl.src = LOGO;
+var navLogoEl=document.getElementById('navLogo');
+if(navLogoEl && LOGO) navLogoEl.src=LOGO;
+var footerLogoEl=document.getElementById('footerLogo');
+if(footerLogoEl && LOGO) footerLogoEl.src=LOGO;
 </script>
 </body>
 </html>

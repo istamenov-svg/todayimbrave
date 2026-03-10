@@ -73,7 +73,7 @@ function init(){
   if(schedEl){
     var h='';
     sched.forEach(function(s,i){
-      h+='<div style="display:flex;gap:20px;padding:20px 0;border-bottom:'+(i<9?'1px solid #E8DDD0':'none')+'"><div style="width:80px;flex-shrink:0;font-size:13px;font-weight:600;color:#1A8A7D;padding-top:2px">'+s[0]+'</div><div><div style="font-size:16px;font-weight:600;color:#1B3A5C;margin-bottom:4px">'+s[1]+'</div><div style="font-size:15px;color:#5A5A5A;line-height:1.5">'+s[2]+'</div></div></div>';
+      h+='<div style="display:flex;gap:20px;padding:20px 0;border-bottom:'+(i<9?'1px solid #E8DDD0':'none')+'"><div style="width:80px;flex-shrink:0;font-size:13px;font-weight:600;color:#D64B8A;padding-top:2px">'+s[0]+'</div><div><div style="font-size:16px;font-weight:600;color:#1B3A5C;margin-bottom:4px">'+s[1]+'</div><div style="font-size:15px;color:#5A5A5A;line-height:1.5">'+s[2]+'</div></div></div>';
     });
     schedEl.innerHTML=h;
   }
@@ -101,23 +101,23 @@ function init(){
   }
 
   // Steps
-  var steps=[['1','Fill Out the Interest Form','Basic info: name, age, grade, contact. Takes 2 minutes.'],['2','We\u2019ll Reach Out','Our team contacts your family to answer questions.'],['3','Complete Enrollment','Finish registration through our camp management system.'],['4','Get Ready for Camp','Receive your packing list and travel details.']];
+  var steps=[['1','Fill Out the Interest Form','Basic info: name, age, grade, contact. Takes 2 minutes.'],['2','We\u2019ll Reach Out','Our team contacts your family to answer questions.'],['3','Complete Enrollment','Finish registration and submit your $50 refundable deposit.'],['4','Get Ready for Camp','Receive your packing list and travel details. Deposit returned at check-in.']];
   var stepsEl=document.getElementById('steps');
   if(stepsEl){
     var h='';
     steps.forEach(function(s){
-      h+='<div class="card" style="text-align:center"><div style="width:44px;height:44px;border-radius:50%;background:#E8793A;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-family:Fraunces,serif;font-weight:700;font-size:20px;color:#fff">'+s[0]+'</div><h4 style="font-size:16px;font-weight:700;color:#1B3A5C;margin-bottom:8px">'+s[1]+'</h4><p style="font-size:14px;line-height:1.6;color:#5A5A5A">'+s[2]+'</p></div>';
+      h+='<div class="card" style="text-align:center"><div style="width:44px;height:44px;border-radius:50%;background:#E8793A;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-weight:700;font-size:20px;color:#fff">'+s[0]+'</div><h4 style="font-size:16px;font-weight:700;color:#1B3A5C;margin-bottom:8px">'+s[1]+'</h4><p style="font-size:14px;line-height:1.6;color:#5A5A5A">'+s[2]+'</p></div>';
     });
     stepsEl.innerHTML=h;
   }
 
   // Giving tiers
-  var tiers=[['$50','Covers round-trip transportation for one camper from Harlem to Camp Eagle Hill.','#1A8A7D'],['$200','Funds one camper\u2019s full week \u2014 transportation, meals, housing, and all programming.','#E8793A'],['$500','Sponsors multiple campers and helps cover program materials and staff training.','#2D5A3D']];
+  var tiers=[['$50','Covers round-trip transportation for one camper from Harlem to Camp Eagle Hill.','#D64B8A'],['$200','Funds one camper\u2019s full week \u2014 transportation, meals, housing, and all programming.','#E8793A'],['$500','Sponsors multiple campers and helps cover program materials and staff training.','#1A8A7D']];
   var tierEl=document.getElementById('givingTiers');
   if(tierEl){
     var h='';
     tiers.forEach(function(t){
-      h+='<div style="background:#FDFAF6;border-radius:16px;padding:32px;border:2px solid '+t[2]+';text-align:center"><div class="fr" style="font-size:44px;font-weight:800;color:'+t[2]+';margin-bottom:12px">'+t[0]+'</div><p style="font-size:15px;line-height:1.6;color:#5A5A5A;margin-bottom:20px">'+t[1]+'</p><button style="background:'+t[2]+';color:#fff;padding:12px 28px;border-radius:8px;font-size:15px;font-weight:600">Give '+t[0]+'</button></div>';
+      h+='<div style="background:#FDFAF6;border-radius:16px;padding:32px;border:2px solid '+t[2]+';text-align:center"><div style="font-size:44px;font-weight:800;color:'+t[2]+';margin-bottom:12px">'+t[0]+'</div><p style="font-size:15px;line-height:1.6;color:#5A5A5A;margin-bottom:20px">'+t[1]+'</p><button style="background:'+t[2]+';color:#fff;padding:12px 28px;border-radius:8px;font-size:15px;font-weight:600">Give '+t[0]+'</button></div>';
     });
     tierEl.innerHTML=h;
   }

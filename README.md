@@ -1,51 +1,27 @@
-# Brave Camp — Beta Website
+# Brave Camp — Today, I'm Brave Foundation
+Beta website for todayimbrave.org/brave-camp
 
-**A program of [Today, I'm Brave Foundation](https://todayimbrave.org)**
+## Deploy to GitHub Pages
+1. Create a new GitHub repository
+2. Upload all files (index.html, images.js, app.js, README.md)
+3. Go to Settings > Pages > Source: Deploy from main branch, root
+4. Site will be live at yourusername.github.io/repo-name
 
-Beta website for Brave Camp, a free weeklong overnight camp experience for middle school kids from Harlem, hosted at Camp Eagle Hill in Elizaville, NY.
+## Files
+- **index.html** (31KB) — HTML/CSS structure, Montserrat + Fraunces fonts
+- **images.js** (1.1MB) — 14 camp images + Brave Camp shield logo as base64
+- **app.js** (7KB) — Navigation, dynamic content, FAQ toggles
 
-## Live Preview
-
-Deploy to GitHub Pages or open `index.html` in a browser.
-
-## Structure
-
-```
-index.html    — Self-contained single-page app (React 18 + Babel standalone)
-README.md     — This file
-```
-
-The site is intentionally a single file for simplicity during beta development. All images are embedded as base64. For production, images should be extracted to a `/images` directory and served separately.
+## Design
+- **Fonts**: Montserrat (body, matching TIB master site) + Fraunces (display headlines)
+- **Colors**: Navy #1B3A5C, Teal #1A8A7D, Orange #E8793A, TIB Pink #D64B8A, Warm White #FDFAF6
+- **Logo**: Brave Camp shield (yellow/gold on white)
 
 ## Pages
-
-- **Home** — Hero, value pillars, stats, photo strip, donor module, press logos
-- **The Program** — Brave Journey methodology, daily schedule, activities, facility
-- **Who It's For** — Eligibility, what's included, how to apply, first-timer section
-- **Safety & Care** — Supervision, medical, emotional wellbeing, communication
-- **Stories** — Testimonials, photo gallery, press coverage
-- **FAQ** — Accordion-style answers organized by concern category
-- **Support Us** — Giving levels, monthly option, tax-deductible confirmation
-
-## Tech
-
-- React 18 (via CDN)
-- Babel standalone (for JSX in-browser)
-- Google Fonts: Fraunces (serif display) + DM Sans (body)
-- No build step required
-- Mobile responsive
-
-## Notes
-
-- Images are AI-generated placeholders for design purposes only. They must be replaced with real photographs before public launch.
-- Parent testimonial placeholders are marked — T,IB must supply real quotes.
-- Stats (camper count, year number, ratios) need confirmation from T,IB leadership.
-- Giving levels ($50/$200/$500) need validation against actual per-camper costs.
-
-## Contact
-
-support@todayimbrave.org
-
----
-
-Today, I'm Brave® is a registered 501(c)(3) nonprofit organization | EIN: 81-4843811
+1. Home — Hero, value pillars, stats, photo strip, donor CTA
+2. The Program — Brave Journey, daily schedule, activities, facility
+3. Who It's For — Eligibility, what's included, how to apply
+4. Safety & Care — Supervision, medical, emotional support, communication
+5. Stories — Testimonials, photo gallery
+6. FAQ — Accordion with cost/deposit, safety, first-timer questions
+7. Support Us — Giving tiers, 501(c)(3) info
