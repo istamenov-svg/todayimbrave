@@ -61,8 +61,8 @@ function handleScroll(){
   var t=Math.min(scrollY/120,1); // 0 at top, 1 after 120px
 
   // Nav: transparent -> solid
-  var bg='rgba(253,250,246,'+t*0.97+')';
-  var border=t>0.5?'1px solid #E8DDD0':'1px solid transparent';
+  var bg='rgba(40,40,40,'+t*0.7+')';
+  var border=t>0.5?'1px solid rgba(255,255,255,0.08)':'1px solid transparent';
   var blur='blur('+Math.round(t*12)+'px)';
   nav.style.background=bg;
   nav.style.borderBottom=border;
@@ -83,16 +83,11 @@ function handleScroll(){
     nav.classList.remove('scrolled');
   }
 
-  // Donate button: white outline -> rose outline
+  // Donate button stays white on dark nav
   var donBtn=document.getElementById('navDonate');
   if(donBtn){
-    if(t>0.5){
-      donBtn.style.borderColor='#B6869E';
-      donBtn.style.color='#896778';
-    }else{
-      donBtn.style.borderColor='rgba(255,255,255,0.5)';
-      donBtn.style.color='#fff';
-    }
+    donBtn.style.borderColor='rgba(255,255,255,'+(0.5+t*0.2)+')';
+    donBtn.style.color='#fff';
   }
 }
 
