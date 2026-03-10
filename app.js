@@ -12,6 +12,7 @@ function showPage(id){
   updateNav();
   document.getElementById('mobMenu').className='mob-menu';
   window.scrollTo(0,0);
+  handleScroll();
 }
 
 function updateNav(){
@@ -52,9 +53,61 @@ function toggleFaq(el){
   }
 }
 
+// ===== SCROLL: NAV DARKEN + LOGO SHRINK =====
+function handleScroll(){
+  var scrollY=window.scrollY||window.pageYOffset;
+  var nav=document.getElementById('mainNav');
+  var logo=document.getElementById('navLogo');
+  var t=Math.min(scrollY/120,1); // 0 at top, 1 after 120px
+
+  // Nav: transparent -> solid
+  var bg='rgba(253,250,246,'+t*0.97+')';
+  var border=t>0.5?'1px solid #E8DDD0':'1px solid transparent';
+  var blur='blur('+Math.round(t*12)+'px)';
+  nav.style.background=bg;
+  nav.style.borderBottom=border;
+  nav.style.backdropFilter=blur;
+  nav.style.webkitBackdropFilter=blur;
+
+  // Logo: 72px -> 44px
+  var size=72-Math.round(t*28);
+  logo.style.height=size+'px';
+
+  // Toggle scrolled class for CSS color transitions
+  if(t>0.5){
+    nav.classList.add('scrolled');
+  }else{
+    nav.classList.remove('scrolled');
+  }
+
+  // Donate button: white outline -> rose outline
+  var donBtn=document.getElementById('navDonate');
+  if(donBtn){
+    if(t>0.5){
+      donBtn.style.borderColor='#B6869E';
+      donBtn.style.color='#896778';
+    }else{
+      donBtn.style.borderColor='rgba(255,255,255,0.5)';
+      donBtn.style.color='#fff';
+    }
+  }
+}
+
+var scrollTick=false;
+window.addEventListener('scroll',function(){
+  if(!scrollTick){
+    scrollTick=true;
+    requestAnimationFrame(function(){
+      handleScroll();
+      scrollTick=false;
+    });
+  }
+});
+
 // ===== DYNAMIC CONTENT =====
 function init(){
   updateNav();
+  handleScroll();
 
   // Schedule
   var sched=[
@@ -73,7 +126,7 @@ function init(){
   if(schedEl){
     var h='';
     sched.forEach(function(s,i){
-      h+='<div style="display:flex;gap:20px;padding:20px 0;border-bottom:'+(i<9?'1px solid #E8DDD0':'none')+'"><div style="width:80px;flex-shrink:0;font-size:13px;font-weight:600;color:#D64B8A;padding-top:2px">'+s[0]+'</div><div><div style="font-size:16px;font-weight:600;color:#1B3A5C;margin-bottom:4px">'+s[1]+'</div><div style="font-size:15px;color:#5A5A5A;line-height:1.5">'+s[2]+'</div></div></div>';
+      h+='<div style="display:flex;gap:20px;padding:20px 0;border-bottom:'+(i<9?'1px solid #E8DDD0':'none')+'"><div style="width:80px;flex-shrink:0;font-size:13px;font-weight:600;color:#B6869E;padding-top:2px">'+s[0]+'</div><div><div style="font-size:16px;font-weight:600;color:#1B3A5C;margin-bottom:4px">'+s[1]+'</div><div style="font-size:15px;color:#5A5A5A;line-height:1.5">'+s[2]+'</div></div></div>';
     });
     schedEl.innerHTML=h;
   }
@@ -84,7 +137,7 @@ function init(){
   if(actEl){
     var h='';
     acts.forEach(function(a){
-      h+='<div style="background:#fff;border:1px solid #E8DDD0;border-radius:10px;padding:16px 20px;font-size:15px;font-weight:500;color:#1B3A5C;display:flex;align-items:center;gap:10px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1A8A7D" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> '+a+'</div>';
+      h+='<div style="background:#fff;border:1px solid #E8DDD0;border-radius:10px;padding:16px 20px;font-size:15px;font-weight:500;color:#1B3A5C;display:flex;align-items:center;gap:10px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B6869E" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> '+a+'</div>';
     });
     actEl.innerHTML=h;
   }
@@ -95,7 +148,7 @@ function init(){
   if(incEl){
     var h='';
     incs.forEach(function(item){
-      h+='<div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:14px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1A8A7D" stroke-width="2.5" stroke-linecap="round" style="flex-shrink:0;margin-top:2px"><polyline points="20 6 9 17 4 12"/></svg><span style="font-size:15px;color:#2C2C2C">'+item+'</span></div>';
+      h+='<div style="display:flex;gap:12px;align-items:flex-start;margin-bottom:14px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#896778" stroke-width="2.5" stroke-linecap="round" style="flex-shrink:0;margin-top:2px"><polyline points="20 6 9 17 4 12"/></svg><span style="font-size:15px;color:#2C2C2C">'+item+'</span></div>';
     });
     incEl.innerHTML=h;
   }
@@ -106,13 +159,13 @@ function init(){
   if(stepsEl){
     var h='';
     steps.forEach(function(s){
-      h+='<div class="card" style="text-align:center"><div style="width:44px;height:44px;border-radius:50%;background:#E8793A;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-weight:700;font-size:20px;color:#fff">'+s[0]+'</div><h4 style="font-size:16px;font-weight:700;color:#1B3A5C;margin-bottom:8px">'+s[1]+'</h4><p style="font-size:14px;line-height:1.6;color:#5A5A5A">'+s[2]+'</p></div>';
+      h+='<div class="card" style="text-align:center"><div style="width:44px;height:44px;border-radius:50%;background:#B6869E;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-weight:700;font-size:20px;color:#fff">'+s[0]+'</div><h4 style="font-family:Helvetica Neue,Helvetica,Arial,sans-serif;font-size:16px;font-weight:700;color:#1B3A5C;margin-bottom:8px">'+s[1]+'</h4><p style="font-size:14px;line-height:1.6;color:#5A5A5A">'+s[2]+'</p></div>';
     });
     stepsEl.innerHTML=h;
   }
 
   // Giving tiers
-  var tiers=[['$50','Covers round-trip transportation for one camper from Harlem to Camp Eagle Hill.','#D64B8A'],['$200','Funds one camper\u2019s full week \u2014 transportation, meals, housing, and all programming.','#E8793A'],['$500','Sponsors multiple campers and helps cover program materials and staff training.','#1A8A7D']];
+  var tiers=[['$50','Covers round-trip transportation for one camper from Harlem to Camp Eagle Hill.','#B6869E'],['$200','Funds one camper\u2019s full week \u2014 transportation, meals, housing, and all programming.','#896778'],['$500','Sponsors multiple campers and helps cover program materials and staff training.','#E8793A']];
   var tierEl=document.getElementById('givingTiers');
   if(tierEl){
     var h='';
