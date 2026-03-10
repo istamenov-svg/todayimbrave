@@ -73,6 +73,9 @@ function handleScroll(){
   var size=72-Math.round(t*28);
   logo.style.height=size+'px';
 
+  // Nav top padding: 12px -> 0px on scroll
+  nav.style.paddingTop=Math.round(12*(1-t))+'px';
+
   // Toggle scrolled class for CSS color transitions
   if(t>0.5){
     nav.classList.add('scrolled');
