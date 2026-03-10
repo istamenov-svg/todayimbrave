@@ -1,6 +1,6 @@
 // ===== NAV & PAGE LOGIC =====
-var pages=['home','program','eligibility','safety','stories','faq','donate'];
-var navLabels={home:'Home',program:'The Program',eligibility:"Who It's For",safety:'Safety & Care',stories:'Stories',faq:'FAQ'};
+var pages=['home','program','eligibility','safety','about','stories','faq','donate'];
+var navLabels={home:'Home',program:'The Program',eligibility:"Who It's For",safety:'Safety & Care',about:'About',stories:'Stories',faq:'FAQ'};
 var currentPage='home';
 
 function showPage(id){
